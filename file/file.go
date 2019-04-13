@@ -361,11 +361,7 @@ func (d *Dapperfile) tag() string {
 	cwd = rePath.ReplaceAllLiteralString(cwd, "-")
 	// the first character of the image can't be '-'
 	if strings.HasPrefix(cwd, "-") {
-		cwd = "d" + cwd
-	}
-	// likewise the last character
-	if strings.HasSuffix(cwd, "-") {
-		cwd = cwd + "d"
+		cwd = "dapper" + cwd
 	}
 
 	return fmt.Sprintf("%s:%s", cwd, tag)
