@@ -22,7 +22,6 @@ import (
 
 var (
 	re           = regexp.MustCompile("[^a-zA-Z0-9]")
-	rePath       = regexp.MustCompile("[^a-z0-9-_]")
 	ErrSkipBuild = errors.New("skip build")
 )
 
@@ -357,12 +356,6 @@ func (d *Dapperfile) tag() string {
 		tag = randString()
 	}
 	tag = re.ReplaceAllLiteralString(tag, "-")
-	// the cwd might not be a valid Docker image name
-	cwd = rePath.ReplaceAllLiteralString(cwd, "-")
-	// the first character of the image can't be '-'
-	if strings.HasPrefix(cwd, "-") {
-		cwd = "dapper" + cwd
-	}
 
 	return fmt.Sprintf("%s:%s", cwd, tag)
 }
