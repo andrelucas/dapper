@@ -22,7 +22,7 @@ import (
 
 var (
 	re           = regexp.MustCompile("[^a-zA-Z0-9]")
-	rePath       = regexp.MustCompile("[^a-z0-9-]")
+	rePath       = regexp.MustCompile("[^a-z0-9-_]")
 	ErrSkipBuild = errors.New("skip build")
 )
 
